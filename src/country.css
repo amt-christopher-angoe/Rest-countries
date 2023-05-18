@@ -1,0 +1,37 @@
+.country{
+    padding: 50px;
+
+}
+
+.btn{
+    margin-bottom: 30px;
+    display: inline-block;
+}
+
+.country article .country-details div{
+ margin: 30px 0;
+}
+
+.country article .country-details div h2{
+    font-weight: 800;
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+.country article .country-details div h5{
+    font-weight: 600;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.country article .country-details div h5 span{
+    font-weight: 300;
+}
+
+
+/*border*/
+
+.country article div h3{
+    margin: 0 10px;
+}
+

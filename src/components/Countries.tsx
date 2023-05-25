@@ -11,7 +11,7 @@ const Countries = () => {
         const countries = await response.json()
         setCountries(countries)
        /* console.log(countries)*/
-    }
+    } 
 
     useEffect(() => {
         fetchCountryData()

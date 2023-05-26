@@ -19,8 +19,9 @@ const Country = () => {
 
         fetchCountryDetails()
     }, [])
-/* Style country components ts = 40.00 */
-/* Style country components ts = 40.00 */
+
+
+
 
 /*
 interface singleCountry {
@@ -60,40 +61,62 @@ interface singleCountry {
 
   return (
     <>
-    <Link to='/' className='btn btn-light'><i className='fas fa-arrow-left'>Back</i></Link>
+    <Link to='/' className='btn btn-light'><i className='fas fa-arrow-left'> Back</i></Link>
     <section className="country">
         {country.map((item: any) => {
-            const {ccn3, flags, name, population, region,subregion, capital, tld, currencies, languages } = item
+            const {ccn3, flags, name, population, region,subregion, capital, tld, currencies, languages, } = item;
+/*
+            const countryCode = {ccn3};
 
+            fetch(`https://restcountries.com/v3.1/alpha/${countryCode}`)
+            .then(response => response.json())
+            .then(data => {const borderCountries = data.borders;
+                console.log(borderCountries)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+*/
             return(
                 <article key={ccn3}>
+                    <div className="country-inner">
                     <div className="flag">
                         <img src={flags['svg']} alt={name['common']} />
                     </div>
                     <div className="country-details">
                         <div>
                             <h2>{name['common']}</h2>
-                            <h5>Native Name:  {typeof name['nativeName'] === 'object' ? (
+                            <h5>Native Name: <span> {typeof name['nativeName'] === 'object' ? (
                             <p>{(Object.values(name['nativeName']) as Array<any>)[0]?.['common']}</p>
                             ) : (
                             <p>{name['nativeName']}</p>
-                            )}</h5>
-                            <h5>Population: {population}</h5>
-                            <h5>Region: {region}</h5>
-                            <h5>Sub Region: {subregion}</h5>
-                            <h5>Capital: {capital}</h5>
+                            )}</span></h5>
+                            <h5>Population: <span>{population}</span></h5>
+                            <h5>Region: <span>{region}</span></h5>
+                            <h5>Sub Region: <span>{subregion}</span></h5>
+                            <h5>Capital: <span>{capital}</span></h5>
                         </div>
                         <div>
-                            <h5>Top Level Domain: {tld}</h5>
-                            <h5>Currencies: {Object.values(currencies as { [key: string]: { name: string; symbol: string } })[0].name}
+                            <h5>Top Level Domain: <span>{tld}</span></h5>
+                            <h5>Currencies: <span>{Object.values(currencies as { [key: string]: { name: string; symbol: string } })[0].name}</span>
                             </h5>
-                            <h5>Languages: {Object.values(languages as {key: string})}</h5>
+                            <h5>Languages: <span>{Object.values(languages as {key: string})}</span></h5>
                         </div>
-
-                        
+        
+                    </div>    
                     </div>
                     <div>
-                        <h3>Borders: {}</h3>
+                        <h3>Borders:</h3>
+                        <div className="borders">
+                        {/*borderCountries.map((item: any) => { black box
+                            {borders.map((border) => {
+                                return (
+                                    <ul key={border}>
+                                        <li>{border}</li>
+                                    </ul>
+                                    )
+                             })*/}
+                        </div>
                     </div>
                 </article>
             )

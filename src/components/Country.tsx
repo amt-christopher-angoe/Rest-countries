@@ -10,18 +10,21 @@ const Country = () => {
 
     useEffect(() => {
         const fetchCountryDetails = async () => {
-         const response = await fetch(`https://restcountries.com/v3.1/name/${name}`);
-            const country = await response.json();
-            setCountry(country);
-            console.log(country);
-            
+            try{
+                const response = await fetch(`https://restcountries.com/v3.1/name/${name}`);
+                const country = await response.json();
+                setCountry(country);
+                console.log(country);
+            } catch (error) {
+                console.log(error);
+            }
         }  
 
         fetchCountryDetails()
-    }, [])
+    }, [name])
 
 
-
+// type interface for single country data
 
 /*
 interface singleCountry {
@@ -60,11 +63,12 @@ interface singleCountry {
 
 
   return (
+    // html structure for single country page
     <>
     <Link to='/' className='btn btn-light'><i className='fas fa-arrow-left'> Back</i></Link>
     <section className="country">
         {country.map((item: any) => {
-            const {ccn3, flags, name, population, region,subregion, capital, tld, currencies, languages, } = item;
+            const { flags, name, population, region,subregion, capital, tld, currencies, languages, borders } = item;
 /*
             const countryCode = {ccn3};
 
@@ -78,7 +82,7 @@ interface singleCountry {
             })
 */
             return(
-                <article key={ccn3}>
+                <article key={name['common']}>
                     <div className="country-inner">
                     <div className="flag">
                         <img src={flags['svg']} alt={name['common']} />
@@ -91,7 +95,7 @@ interface singleCountry {
                             ) : (
                             <p>{name['nativeName']}</p>
                             )}</span></h5>
-                            <h5>Population: <span>{population}</span></h5>
+                            <h5>Population: <span>{population.toLocaleString()}</span></h5>
                             <h5>Region: <span>{region}</span></h5>
                             <h5>Sub Region: <span>{subregion}</span></h5>
                             <h5>Capital: <span>{capital}</span></h5>
@@ -100,7 +104,15 @@ interface singleCountry {
                             <h5>Top Level Domain: <span>{tld}</span></h5>
                             <h5>Currencies: <span>{Object.values(currencies as { [key: string]: { name: string; symbol: string } })[0].name}</span>
                             </h5>
-                            <h5>Languages: <span>{Object.values(languages as {key: string})}</span></h5>
+                            <h5>Languages: <span>{Object.values(languages as {key: string})}</span>
+                            {/*languages.map((languages: any) => {
+                                return(
+                                <ul key={languages}>
+                                    <li>{languages}</li>
+                                </ul>
+                                )
+                            })*/}
+                            </h5>
                         </div>
         
                     </div>    
@@ -108,14 +120,18 @@ interface singleCountry {
                     <div>
                         <h3>Borders:</h3>
                         <div className="borders">
-                        {/*borderCountries.map((item: any) => { black box
-                            {borders.map((border) => {
+                        {/*Object.values(borders as { key: string})*/}
+                        {item['borders'] &&
+                        <>
+                            {borders.map((borders: any) => {
                                 return (
-                                    <ul key={border}>
-                                        <li>{border}</li>
+                                    <ul key={borders}>
+                                        <li>{borders}</li>
                                     </ul>
                                     )
-                             })*/}
+                             })}
+                        </>
+                        }
                         </div>
                     </div>
                 </article>

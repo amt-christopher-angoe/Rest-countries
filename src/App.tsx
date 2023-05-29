@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Headers from './components/Headers';
-import Filter from './components/Filter';
 import Countries from './components/Countries';
 import Country from './components/Country';
 
@@ -21,7 +20,6 @@ function App(): JSX.Element {
 function Home(): JSX.Element {
   return (
     <>
-      <Filter />
       <Routes>
         <Route path="/" element={<Countries />} />
         <Route path="/countries/:name" element={<Country />} />

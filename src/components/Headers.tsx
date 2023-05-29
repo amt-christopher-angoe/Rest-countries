@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Headers = () => {
+  // theme toggle code.
   const changeTheme = () => {
     const moon = document.querySelector('.fa-moon');
     const nav = document.querySelector('.header');
@@ -8,7 +9,7 @@ const Headers = () => {
     const select = document.querySelector('.select');
     const btn = document.querySelector('.btn')
     const countryInfo = document.querySelectorAll('.country-info');
-  //  const uls = document.querySelectorAll('ul')
+    const uls = document.querySelectorAll('ul')
 
     moon?.addEventListener('click', () => {
       document.body.classList.toggle('light-theme');
@@ -20,10 +21,10 @@ const Headers = () => {
       countryInfo.forEach((info) => {
         info.classList.toggle('light-theme');
     })
-    /*
+    
     uls.forEach((ul) => {
       ul.classList.toggle('light-theme');
-  })*/
+  })
     })  
   }
 

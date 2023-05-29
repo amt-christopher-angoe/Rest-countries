@@ -20,7 +20,7 @@ const Countries = () => {
         {
           name: "Americas"
         }
-      ]
+      ];
     
     
     //use state values for search
@@ -30,18 +30,18 @@ const Countries = () => {
     // data fetch
         const fetchCountryData = async() => {
         try{
-            const response = await fetch(url)
-            const countries = await response.json()
-            setCountries(countries)
+            const response = await fetch(url);
+            const countries = await response.json();
+            setCountries(countries);
            /* console.log(countries)*/
         } catch(error) {
-            console.log(error)
-        }
-        } 
+            console.log(error);
+        };
+        } ;
     
         useEffect(() => {
-            fetchCountryData()
-        }, [])
+            fetchCountryData();
+        }, []);
     
     
 //search function  
@@ -67,17 +67,35 @@ const Countries = () => {
     async function searchCountry() {
         try {
           const res = await fetch(`https://restcountries.com/v3.1/name/${searchText}`);
-          const data = await res.json()
-          setCountries(data)
+          const data = await res.json();
+          setCountries(data);
         } catch (error) {
-          console.log(error)
-        }    
-        }
-        
+          console.log(error);
+        }    ;
+    };
+    // get request to filter by region
+    async function filterByRegion(region: any) {
+        try {
+            const res = await fetch(`https://restcountries.com/v3.1/region/${region}`);
+            const data = await res.json();
+            setCountries(data);
+        } catch (error) {
+            console.log(error);
+        };
+    };
+
+
+
         function handleSearch(e: any) {
-        e.preventDefault()
-        searchCountry()
-        }    
+        e.preventDefault();
+        searchCountry();
+        }   ; 
+
+
+        function handleFilterByRegion(e: any) {
+            e.preventDefault();
+            filterByRegion(region);
+        };
 
   return (
     //html structure of both filter bar and home page html structure
@@ -93,12 +111,14 @@ const Countries = () => {
               onChange={(e) => setSearchText(e.target.value)}/>
         </form>
 
-        <form className='region-filter'>
+        <form onSubmit={handleFilterByRegion} className='region-filter'>
             <select 
             name="filter-by-region" 
             id="filter-by-region" 
             className='select' 
-            title='select'>
+            title='select'
+            onChange={e => filterByRegion(e.target.value)}
+            >
               {region.map((region, index) => (
                 <option key={index} value={region.name}>{region.name}</option>
               ))}

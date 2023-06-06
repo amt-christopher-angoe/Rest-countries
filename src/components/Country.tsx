@@ -100,7 +100,7 @@ interface singleCountry {
                             <h5>Sub Region: <span>{subregion}</span></h5>
                             <h5>Capital: <span>{capital}</span></h5>
                         </div>
-                        <div>
+                        <div className='right'>
                             <h5>Top Level Domain: <span>{tld}</span></h5>
                             <h5>Currencies: <span>{Object.values(currencies as { [key: string]: { name: string; symbol: string } })[0].name}</span>
                             </h5>
@@ -117,7 +117,7 @@ interface singleCountry {
         
                     </div>    
                     </div>
-                    <div>
+                    <div className='border-bottom'>
                         <h3>Borders:</h3>
                         <div className="borders">
                         {/*Object.values(borders as { key: string})*/}

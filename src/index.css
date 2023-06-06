@@ -9,9 +9,6 @@
     --light-mode-background: hsl(0, 0%, 98%);
 }
 
-
-
-
 *{
   margin: 0;
   padding: 0;
@@ -26,9 +23,9 @@ a{
   text-decoration: none;
 }
 
-
 img{
   max-width: 100%;
+  max-height: 100%;
 }
 
 .btn {
@@ -49,17 +46,12 @@ img{
   color: var(--text-color);
 }
 
-
-
 body{
   font-family: 'Nunito Sans', 'sans-serif';
   background-color: var(--dark-bg-color);
   color: var(--text-color);
-  transition: background-color 0.4s;
+  transition: background-color 0.6s;
 }
-
-
-
 
 
 
@@ -72,13 +64,16 @@ body{
   background-color: var(--article-color);
   padding: 10px 20px;
   box-shadow: 0 5px 10px hsla(200, 15%, 8%, 0.1);
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   transition: background-color 0.4s;
+  height: 70px;
 }
-
-
-
-
+.header h1{
+  font-size: 1em;
+}
+.header i:hover{
+  cursor: pointer;
+}
 
 
 /*Filter & search*/
@@ -131,17 +126,18 @@ body{
   border-radius: 5px;
   height: 50px;
   width: 50%;
-  border: none;
+  border: none !important;
   outline: none;
   font-family: inherit;
   box-shadow: 0 5px 10px hsla(200, 15%, 8%, 0.1);
   transition: background-color 0.4s;
+
 }
 
+.filter .region-filter .select option{
+  font-size: 12px;
 
-
-
-
+}
 
 /*Grid : images and text*/
 /*Grid : images and text*/
@@ -156,18 +152,20 @@ body{
 
 .grid article img{
   border-radius: 7px 7px 0 0;
-  /*height: 250px;*/
+  height: 200px;
+  width: 100%;
 }
 
 .grid article{
   box-shadow: 0 5px 10px hsla(200, 15%, 8%, 0.1);
+  
 }
 
 .grid .country-info{
   background-color: var(--article-color);
   padding: 20px;
-  margin: -15px 0 30px;
-  border-radius: 0 0 7px 7px;
+  margin: -15px 0 0px;
+  border-radius: 0 0 9px 9px;
   transition: background-color 0.4s;
 }
 
@@ -182,9 +180,6 @@ body{
 .grid .country-info h4 span{
   font-weight: 300;
 }
-
-
-
 
 
 
@@ -245,7 +240,7 @@ header.light-theme {
     width: auto;
   }
   .filter .region-filter{
-    width: 10%
+    width: 20%
   }
   .filter .region-filter .select{
     width: 100%;
@@ -254,10 +249,13 @@ header.light-theme {
     height: 150px;
     padding: 0 100px;
   }
+  .header h1{
+    font-size: 2em;
+  }
 
   .grid{
     grid-template-columns: repeat(2, 1fr);
-    padding: 50px 100px
+    padding: 50px 100px; 
   }
 }
 
@@ -267,6 +265,24 @@ header.light-theme {
 @media(min-width: 1440px) {
   body{
     font-size: 16px;
+  }
+  .filter .form-control{
+    width: 40%;
+  }
+  .filter .form-control input{
+    width: 100%;
+  }
+  .filter .region-filter{
+    width: 15%
+  }
+  .filter .region-filter .select{
+    width: 100%;
+  }
+  .header{
+    height: 120px;
+  }
+  .header h1{
+    font-size: 2em;
   }
   .grid{
     grid-template-columns: repeat(4, 1fr);

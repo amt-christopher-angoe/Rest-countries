@@ -11,7 +11,7 @@ const Headers = () => {
     const countryInfo = document.querySelectorAll('.country-info');
     const uls = document.querySelectorAll('ul')
 
-    moon?.addEventListener('click', () => {
+    {
       document.body.classList.toggle('light-theme');
       nav?.classList.toggle('light-theme');
       input?.classList.toggle('light-theme');
@@ -25,7 +25,7 @@ const Headers = () => {
     uls.forEach((ul) => {
       ul.classList.toggle('light-theme');
   })
-    })  
+    }
   }
 
   return (

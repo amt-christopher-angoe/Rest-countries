@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import '../index.css'
 // api link
 const url = 'https://restcountries.com/v3.1/all'
 
@@ -118,8 +119,9 @@ const Countries = () => {
             className='select' 
             title='select'
             onChange={e => filterByRegion(e.target.value)}
-            >
+            ><option selected disabled> Filter by Region</option>
               {region.map((region, index) => (
+                
                 <option key={index} value={region.name}>{region.name}</option>
               ))}
             </select>
@@ -141,7 +143,7 @@ const Countries = () => {
             <article key={name['common']}>
                 <div>
                 <Link to={`/countries/${name['common']}`}>
-                    <img src={flags['svg']} alt={name['common']} />
+                    <img src={flags['png']} alt={name['common']} />
                 </Link>
                         <div className="country-info">
                             <h3 className='country-name'>{name['common']}</h3>

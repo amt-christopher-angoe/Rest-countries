@@ -43,7 +43,7 @@ font-weight: 600;
 }
 
 .country article .borders ul{
-    margin: 10px;
+    margin: 10px; 
     background-color: var(--article-color);
     padding: 3px 15px;
     border-radius: 3px;
@@ -54,6 +54,7 @@ font-weight: 600;
     background-color: var(--light-mode-background);
     color: var(--light-mode-text);
 }
+
 
 
 
@@ -94,5 +95,12 @@ font-weight: 600;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
+      }
+
+      .country article .border-bottom{
+        margin-left: 52%;
+      }
+      .country article .country-details .right{
+        margin-top: 24%;
       }
     }

@@ -3,7 +3,6 @@ import React from 'react'
 const Headers = () => {
   // theme toggle code.
   const changeTheme = () => {
-    const moon = document.querySelector('.fa-moon');
     const nav = document.querySelector('.header');
     const input = document.querySelector('#search');
     const select = document.querySelector('.select');
@@ -11,7 +10,7 @@ const Headers = () => {
     const countryInfo = document.querySelectorAll('.country-info');
     const uls = document.querySelectorAll('ul')
 
-    {
+    
       document.body.classList.toggle('light-theme');
       nav?.classList.toggle('light-theme');
       input?.classList.toggle('light-theme');
@@ -25,7 +24,7 @@ const Headers = () => {
     uls.forEach((ul) => {
       ul.classList.toggle('light-theme');
   })
-    }
+    
   }
 
   return (

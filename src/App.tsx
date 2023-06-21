@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Headers from './components/Headers';
 import Countries from './components/Countries';
-import Country from './components/Country';
+import CountryDetails from './components/Country';
 
 function App(): JSX.Element {
   return (
@@ -22,7 +22,7 @@ function Home(): JSX.Element {
     <>
       <Routes>
         <Route path="/" element={<Countries />} />
-        <Route path="/countries/:name" element={<Country />} />
+        <Route path="/countries/:name" element={<CountryDetails />} />
       </Routes>
     </>
   );

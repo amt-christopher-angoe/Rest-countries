@@ -48,6 +48,7 @@ img{
 
 body{
   font-family: 'Nunito Sans', 'sans-serif';
+  font-size: small;
   background-color: var(--dark-bg-color);
   color: var(--text-color);
   transition: background-color 0.6s;
@@ -69,10 +70,16 @@ body{
   height: 70px;
 }
 .header h1{
-  font-size: 1em;
+  font-size: 1.2em;
 }
 .header i:hover{
   cursor: pointer;
+}
+.header i span{
+  margin-left: 12px;
+  font-size: 10px;
+  font-weight: lighter;
+  text-transform: lowercase;
 }
 
 
@@ -97,7 +104,8 @@ body{
 .filter .form-control input{
  background-color: var(--article-color);
  outline: none;
- padding: 8px;
+ padding: 10px;
+ padding-left: 30px;
  border: none;
  border-radius: 5px;
  font-family: inherit;
@@ -111,8 +119,27 @@ body{
 }
 
 .filter .form-control input::placeholder {
-  color: var(--text-color);
+  color: red;
 }
+.filter .form-control{
+  position: relative;
+}
+.filter .form-control .icon{
+  position: absolute; 
+  left: -10px;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.filter .form-control .icon i{
+  color: var(--text-color);
+  margin-right: 5px;
+}
+
+
 
 /*select*/
 .filter .region-filter {
@@ -131,12 +158,10 @@ body{
   font-family: inherit;
   box-shadow: 0 5px 10px hsla(200, 15%, 8%, 0.1);
   transition: background-color 0.4s;
-
 }
 
 .filter .region-filter .select option{
   font-size: 12px;
-
 }
 
 /*Grid : images and text*/
@@ -158,7 +183,6 @@ body{
 
 .grid article{
   box-shadow: 0 5px 10px hsla(200, 15%, 8%, 0.1);
-  
 }
 
 .grid .country-info{
@@ -183,6 +207,7 @@ body{
 
 
 
+
 /*light mode*/
 body.light-theme {
   background-color: var(--light-mode-background);
@@ -193,13 +218,15 @@ header.light-theme {
   background-color: var(--text-color);
   color: var(--light-mode-text);
 }
-
+.filter .form-control .icon i .light-theme{
+  color: var(--light-mode-text);
+}
 
 .filter input.light-theme{
   background-color: var(--text-color);
   color: var(--light-mode-text);
 }
-.filter .form-control input::placeholder{
+.filter .form-control input::placeholder.light-theme{
   color: var(--light-mode-text);
 }
 .filter .region-filter .select.light-theme{
@@ -256,6 +283,34 @@ header.light-theme {
   .grid{
     grid-template-columns: repeat(2, 1fr);
     padding: 50px 100px; 
+  }
+}
+
+@media(min-width: 1200px){
+  body{
+    font-size: 16px;
+  }
+  .filter .form-control{
+    width: 40%;
+  }
+  .filter .form-control input{
+    width: 100%;
+  }
+  .filter .region-filter{
+    width: 15%
+  }
+  .filter .region-filter .select{
+    width: 100%;
+  }
+  .header{
+    height: 120px;
+  }
+  .header h1{
+    font-size: 2em;
+  }
+  .grid{
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px;
   }
 }
 

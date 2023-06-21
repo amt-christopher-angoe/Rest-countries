@@ -1,162 +1,109 @@
-import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState, FormEvent, ChangeEvent } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { ThunkDispatch } from 'redux-thunk';
+import { fetchCountries, searchCountries, filterCountriesByRegion, Country, CountriesActionTypes  } from './actions/actions';
+import { AppState } from './actions/reducers';
 import '../index.css'
-// api link
-const url = 'https://restcountries.com/v3.1/all'
 
 const Countries = () => {
-    const region = [
-        {
-          name: "Europe"
-        },
-        {
-          name: "Asia"
-        },
-        {
-          name: "Africa"
-        },
-        {
-          name: "Oceania"
-        },
-        {
-          name: "Americas"
-        }
-      ];
-    
-    
-    //use state values for search
-    const [searchText, setSearchText] = useState('');
-      // use state for loading country information
-    const [Countries, setCountries] = useState([])
-    // data fetch
-        const fetchCountryData = async() => {
-        try{
-            const response = await fetch(url);
-            const countries = await response.json();
-            setCountries(countries);
-           /* console.log(countries)*/
-        } catch(error) {
-            console.log(error);
-        };
-        } ;
-    
-        useEffect(() => {
-            fetchCountryData();
-        }, []);
-    
-    
-//search function  
-      window.addEventListener('DOMContentLoaded', () => {
-      const search = document.getElementById('search');
-    
-      search?.addEventListener('input', (e: any) => {
-        const { value } = e.target;
-    
-        const countryName = document.querySelectorAll('.country-name');
-    
-        countryName.forEach((country: any) => {
-          if (country.innerText.toLowerCase().includes(value.toLowerCase())) {
-            country.parentElement.parentElement.style.display = 'block';
-          } else {
-            country.parentElement.parentElement.style.display = 'none';
-          }
-        });
-      })
-    })
+  const dispatch: ThunkDispatch<AppState, null, CountriesActionTypes> = useDispatch();
+  const { filteredCountries, loading, error } = useSelector((state: AppState) => state);
 
-    // get request to return individual searched country and update the page
-    async function searchCountry() {
-        try {
-          const res = await fetch(`https://restcountries.com/v3.1/name/${searchText}`);
-          const data = await res.json();
-          setCountries(data);
-        } catch (error) {
-          console.log(error);
-        }    ;
-    };
-    // get request to filter by region
-    async function filterByRegion(region: any) {
-        try {
-            const res = await fetch(`https://restcountries.com/v3.1/region/${region}`);
-            const data = await res.json();
-            setCountries(data);
-        } catch (error) {
-            console.log(error);
-        };
-    };
+  useEffect(() => {
+    dispatch(fetchCountries());
+  }, [dispatch]);
 
+  const [searchText, setSearchText] = useState('');
+  const [regionFilter, setRegionFilter] = useState('');
 
+  const handleSearch = (e: FormEvent) => {
+    e.preventDefault();
+    dispatch(searchCountries(searchText));
+  };
+/*
+  const handleFilterByRegion = (e: ChangeEvent<HTMLSelectElement>) => {
+    e.preventDefault();
+    const selectedRegion = e.target.value;
+    dispatch(filterCountriesByRegion(selectedRegion));
+    setRegionFilter(selectedRegion);
+  };*/
 
-        function handleSearch(e: any) {
-        e.preventDefault();
-        searchCountry();
-        }   ; 
-
-
-        function handleFilterByRegion(e: any) {
-            e.preventDefault();
-            filterByRegion(region);
-        };
+  const handleFilterByRegion = (e: ChangeEvent<HTMLSelectElement>) => {
+    e.preventDefault();
+    dispatch(filterCountriesByRegion(e.target.value));
+  };
 
   return (
-    //html structure of both filter bar and home page html structure
     <>
-    <section className="filter">
-        <form onSubmit={handleSearch} className="form-control">
-            <input 
-              type="text" 
-              name='search' id='search' 
-              placeholder='Search for a country' 
+     
+        <section className="filter">
+          <form onSubmit={handleSearch} className="form-control">
+            <input
+              type="text"
+              name='search'
+              id='search'
+              placeholder="Search countries"
               required
               value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}/>
-        </form>
-
-        <form onSubmit={handleFilterByRegion} className='region-filter'>
-            <select 
-            name="filter-by-region" 
-            id="filter-by-region" 
-            className='select' 
-            title='select'
-            onChange={e => filterByRegion(e.target.value)}
-            ><option selected disabled> Filter by Region</option>
-              {region.map((region, index) => (
-                
-                <option key={index} value={region.name}>{region.name}</option>
-              ))}
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+            <div className="icon">
+              <i className="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+            </div>
+          </form>
+          {/*onSubmit={handleFilterByRegion*/}
+          <form  className="region-filter">
+            <select
+              name="filter-by-region"
+              id="filter-by-region"
+              className='select'
+              title='select'
+              value={regionFilter}
+              onChange={handleFilterByRegion}
+            >
+              <option selected disabled>
+              Filter by Region
+              </option>
+              <option value="Africa">Africa</option>
+              <option value="Americas">Americas</option>
+              <option value="Asia">Asia</option>
+              <option value="Europe">Europe</option>
+              <option value="Oceania">Oceania</option>
             </select>
-        </form>
-    </section>
-
-
-    <section className='grid'>
-        {Countries.map((country: any) => {
-            const {  
-                name, 
-                population, 
-                region, 
-                capital, 
-                flags 
-            } =country
-
+          </form>
+          </section>
+          
+          <section className="grid">
+          {filteredCountries.map((country) => {
+            const { name, population, region, capital, flags } = country;
             return (
-            <article key={name['common']}>
+              <article key={name.common}>
                 <div>
-                <Link to={`/countries/${name['common']}`}>
-                    <img src={flags['png']} alt={name['common']} />
-                </Link>
-                        <div className="country-info">
-                            <h3 className='country-name'>{name['common']}</h3>
-                            <h4>Population: <span>{population.toLocaleString()}</span></h4>
-                            <h4>Region: <span>{region}</span></h4>
-                            <h4>Capital: <span>{capital}</span></h4>
-                        </div>  
+                  <Link to={`/countries/${name.common}`}>
+                    <img src={flags.png} alt={name.common} />
+                  </Link>
+                  <div className="country-info">
+                    <h3 className="country-name">{name.common}</h3>
+                    <h4>
+                      Population: <span>{population.toLocaleString()}</span>
+                    </h4>
+                    <h4>
+                      Region: <span>{region}</span>
+                    </h4>
+                    <h4>
+                      Capital: <span>{capital}</span>
+                    </h4>
+                  </div>
                 </div>
-            </article>)
-        })}
-    </section>
+              </article>
+            );
+          })}
+        </section>
+  
+      
     </>
-  )
-}
+  );
+};
 
-export default Countries
+export default Countries;

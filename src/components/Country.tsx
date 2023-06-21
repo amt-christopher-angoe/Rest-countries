@@ -54,19 +54,19 @@ const Country = () => {
           <div className="border-bottom">
             <h3>Borders:</h3>
             <div className="borders">
-  {borders &&
-    borders.map((border: string) => {
-      const matchedCountry = Object.values(country).find(
-        (country: any) => country.cioc === border
-      );
-      return (
-        <ul key={border}>
-          <li>{matchedCountry ? matchedCountry  : countryName.common}</li>
-        </ul>
-      );
-    })
-  }
-</div>
+            {borders &&
+                borders.map((border: string) => {
+                const matchedCountry = Object.values(country).find(
+                    (country: any) => country.cioc === border
+                );
+                return (
+                    <ul key={border}>
+                    <li>{border}</li>
+                    </ul>
+                );
+                })
+            }
+            </div>
 
           </div>
         </article>

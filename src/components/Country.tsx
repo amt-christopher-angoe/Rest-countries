@@ -15,9 +15,9 @@ const Country = () => {
     return null;
   }
 
-  const { flags, population, region, subregion, capital, tld, currencies, languages, borders } = country;
+  const { flags, population, region, subregion, capital, tld, currencies, languages, borders,cioc } = country;
   const countryName = country.name
-
+  console.log(country)
   return (
     <>
       <Link to="/" className="btn btn-light">
@@ -46,7 +46,7 @@ const Country = () => {
               </div>
               <div className="right">
                 <h5>Top Level Domain: <span>{tld}</span></h5>
-                <h5>Currencies: <span>{Object.values(currencies)[0].name}</span></h5>
+                <h5>Currencies: <span>{/*Object.values(currencies)[0].name*/}</span></h5>
                 <h5>Languages: <span>{Object.values(languages)}</span></h5>
               </div>
             </div>
@@ -54,16 +54,20 @@ const Country = () => {
           <div className="border-bottom">
             <h3>Borders:</h3>
             <div className="borders">
-              {borders &&
-                <>
-                  {borders.map((border: string) => (
-                    <ul key={border}>
-                      <li>{border}</li>
-                    </ul>
-                  ))}
-                </>
-              }
-            </div>
+  {borders &&
+    borders.map((border: string) => {
+      const matchedCountry = Object.values(country).find(
+        (country: any) => country.cioc === border
+      );
+      return (
+        <ul key={border}>
+          <li>{matchedCountry ? matchedCountry  : countryName.common}</li>
+        </ul>
+      );
+    })
+  }
+</div>
+
           </div>
         </article>
       </section>

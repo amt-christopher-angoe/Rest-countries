@@ -28,6 +28,7 @@ export interface Country {
   };
   languages: {};
   borders: [];
+  cioc: string
 }
 
 export interface FetchCountriesRequestAction {

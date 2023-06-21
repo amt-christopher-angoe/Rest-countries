@@ -59,12 +59,10 @@ const Countries = () => {
               id="filter-by-region"
               className='select'
               title='select'
+              defaultValue={'filter by region'}
               value={regionFilter}
               onChange={handleFilterByRegion}
             >
-              <option selected disabled>
-              Filter by Region
-              </option>
               <option value="Africa">Africa</option>
               <option value="Americas">Americas</option>
               <option value="Asia">Asia</option>

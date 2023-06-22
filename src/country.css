@@ -24,19 +24,19 @@
 }
 
 .country article .country-details div h2{
-    font-weight: 800;
+    font-weight: 900;
     font-size: 25px;
     letter-spacing: 1px;
 }
 
 .country article .country-details div h5{
-    font-weight: 800;
+    font-weight: 600;
     margin: 10px 0;
     font-size: 18px;
 }
 
 .country article .country-details div h5 span{
-    font-weight: 300;
+    font-weight: 200;
 }
 .country article .flag img{
   border-radius: 5px;
@@ -94,24 +94,55 @@ font-weight: 900;
 /*desktop view*/
 @media(min-width: 1440px){
     .country {
-        max-width: 1300px;
+        max-width: 1600px;
       }
+
+
+    .btn{        
+        padding-left: 25px;
+        padding-right: 30px;
+        margin-left: 120px;
+        margin-top: 80px;
+        
+    }
+
+    .country article .country-details{
+      margin-top: -10px;
+    }
+    .country article .flag{
+      margin-top: -30px;
+    }
+
     .country article .country-inner {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
+        gap: 50px;
       }
+
+      .country article .flag img{
+        border-radius: 10px;
+        border: none;
+        width: 100%;
+        height: 400px;
+
+      }
+
     
       .country .country-details {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
+        margin-left: 120px;
       }
 
       .country article .border-bottom{
-        margin-left: 52%;
+        margin-left: 60%;
+        margin-top: -90px;
       }
       .country article .country-details .right{
-        margin-top: 24%;
+        margin-top: 26%;
+      }
+      .country article .country-details div h2{
+        font-size: 30px;
       }
     }

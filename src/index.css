@@ -116,11 +116,17 @@ body{
  color: var(--text-color);
  box-shadow: 0 5px 10px hsla(200, 15%, 8%, 0.1);
  transition: background-color 0.4s;
+ 
 }
 
+
+/*
 .filter .form-control input::placeholder {
-  color: red;
+  color: var(--text-color);
 }
+*/
+
+
 .filter .form-control{
   position: relative;
 }
@@ -218,7 +224,7 @@ header.light-theme {
   background-color: var(--text-color);
   color: var(--light-mode-text);
 }
-.filter .form-control .icon i .light-theme{
+.filter .form-control .icon i.light-theme{
   color: var(--light-mode-text);
 }
 
@@ -226,9 +232,13 @@ header.light-theme {
   background-color: var(--text-color);
   color: var(--light-mode-text);
 }
+
+/*
 .filter .form-control input::placeholder.light-theme{
   color: var(--light-mode-text);
 }
+*/
+
 .filter .region-filter .select.light-theme{
   background-color: var(--text-color);
   color: var(--light-mode-text);

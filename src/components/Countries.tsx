@@ -50,7 +50,7 @@ const Countries = () => {
               onChange={(e) => setSearchText(e.target.value)}
             />
             <div className="icon">
-              <i className="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+              <i className="fa-solid fa-magnifying-glass" id='search-icon' aria-hidden="true"></i>
             </div>
           </form>
           {/*onSubmit={handleFilterByRegion*/}

@@ -2,13 +2,13 @@ import React, { useEffect, useState, FormEvent, ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ThunkDispatch } from 'redux-thunk';
-import { fetchCountries, searchCountries, filterCountriesByRegion, Country, CountriesActionTypes  } from './actions/actions';
+import { fetchCountries, searchCountries, filterCountriesByRegion, CountriesActionTypes  } from './actions/actions';
 import { AppState } from './actions/reducers';
 import '../index.css'
 
 const Countries = () => {
   const dispatch: ThunkDispatch<AppState, null, CountriesActionTypes> = useDispatch();
-  const { filteredCountries, loading, error } = useSelector((state: AppState) => state);
+  const { filteredCountries } = useSelector((state: AppState) => state);
 
   useEffect(() => {
     dispatch(fetchCountries());
@@ -32,6 +32,7 @@ const Countries = () => {
   const handleFilterByRegion = (e: ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
     dispatch(filterCountriesByRegion(e.target.value));
+    setRegionFilter(e.target.value);
   };
 
   return (

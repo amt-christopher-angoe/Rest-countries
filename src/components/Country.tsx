@@ -46,7 +46,7 @@ const Country = () => {
               </div>
               <div className="right">
                 <h5>Top Level Domain: <span>{tld}</span></h5>
-                <h5>Currencies: <span>{/*Object.values(currencies)[0].name*/}</span></h5>
+                <h5>Currencies: <span>{currencies[0]/*Object.values(currencies)[0].name*/}</span></h5>
                 <h5>Languages: <span>{Object.values(languages)}</span></h5>
               </div>
             </div>
@@ -54,18 +54,16 @@ const Country = () => {
           <div className="border-bottom">
             <h3>Borders:</h3>
             <div className="borders">
-            {borders &&
-                borders.map((border: string) => {
-                const matchedCountry = Object.values(country).find(
-                    (country: any) => country.cioc === border
-                );
-                return (
-                    <ul key={border}>
-                    <li>{border}</li>
-                    </ul>
-                );
-                })
-            }
+                {borders &&
+                    borders.map((border: string) => {
+                        if (border === cioc) {}
+                    return (
+                        <ul key={border}>
+                            <li>{border}</li>
+                        </ul>
+                    );
+                    })
+                }
             </div>
 
           </div>

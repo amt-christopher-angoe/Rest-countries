@@ -15,13 +15,14 @@ const Country = () => {
     return null;
   }
 
-  const { flags, population, region, subregion, capital, tld, currencies, languages, borders,cioc } = country;
-  const countryName = country.name
-  console.log(country)
+  const { flags, population, region, subregion, capital, tld, currencies, languages, borders } = country;
+  const countryName = country.name;
+  const currenciesObj = currencies as { [key: string]: { name: string } };
+  console.log(country);
   return (
     <>
       <Link to="/" className="btn btn-light">
-        <i className="fa-solid fa-arrow-left"> <span>back</span></i>
+        <i className="fa-solid fa-arrow-left"></i><span className='btn-txt'>back</span>
       </Link>
       <section className="country">
         <article key={countryName.common}>
@@ -33,11 +34,11 @@ const Country = () => {
               <div>
                 <h2>{countryName.common}</h2>
                 <h5>
-                  Native Name: <span>{typeof countryName.nativeName === 'object' ? (
-                    <p>{(Object.values(countryName.nativeName) as Array<any>)[0]?.common}</p>
+                  Native Name: {typeof countryName.nativeName === 'object' ? (
+                    (Object.values(countryName.nativeName) as Array<any>)[0]?.common
                   ) : (
-                    <p>{countryName.nativeName}</p>
-                  )}</span>
+                    <span>{countryName.nativeName}</span>
+                  )}
                 </h5>
                 <h5>Population: <span>{population.toLocaleString()}</span></h5>
                 <h5>Region: <span>{region}</span></h5>
@@ -46,7 +47,7 @@ const Country = () => {
               </div>
               <div className="right">
                 <h5>Top Level Domain: <span>{tld}</span></h5>
-                <h5>Currencies: <span>{currencies[0]/*Object.values(currencies)[0].name*/}</span></h5>
+                <h5>Currencies: <span>{currenciesObj && Object.values(currenciesObj)[0].name}</span></h5>
                 <h5>Languages: <span>{Object.values(languages)}</span></h5>
               </div>
             </div>
@@ -54,17 +55,19 @@ const Country = () => {
           <div className="border-bottom">
             <h3>Borders:</h3>
             <div className="borders">
-                {borders &&
-                    borders.map((border: string) => {
-                        if (border === cioc) {}
-                    return (
-                        <ul key={border}>
-                            <li>{border}</li>
-                        </ul>
-                    );
-                    })
-                }
-            </div>
+            {borders &&
+              borders.map((border: string) => {
+                const matchingCountry = countries.find((country: any) => country.cca3 === border);
+                const countryName = matchingCountry ? matchingCountry.name.common : border;
+
+                return (
+                  <ul key={border}>
+                   <li>{countryName}</li>
+                  </ul>
+                );
+              })
+            }
+          </div>
 
           </div>
         </article>

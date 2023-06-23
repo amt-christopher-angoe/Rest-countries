@@ -105,7 +105,7 @@ body{
  background-color: var(--article-color);
  outline: none;
  padding: 10px;
- padding-left: 30px;
+ padding-left: 60px;
  border: none;
  border-radius: 5px;
  font-family: inherit;
@@ -142,7 +142,7 @@ body{
 }
 .filter .form-control .icon i{
   color: var(--text-color);
-  margin-right: 5px;
+  padding-left: 25px;
 }
 
 
@@ -164,10 +164,14 @@ body{
   font-family: inherit;
   box-shadow: 0 5px 10px hsla(200, 15%, 8%, 0.1);
   transition: background-color 0.4s;
+
 }
+
 
 .filter .region-filter .select option{
   font-size: 12px;
+  border: none;
+  outline: none;
 }
 
 /*Grid : images and text*/
@@ -193,7 +197,8 @@ body{
 
 .grid .country-info{
   background-color: var(--article-color);
-  padding: 20px;
+  padding: 30px;
+  padding-bottom: 60px;
   margin: -15px 0 0px;
   border-radius: 0 0 9px 9px;
   transition: background-color 0.4s;
@@ -201,10 +206,13 @@ body{
 
 .grid .country-info h3{
   padding-bottom: 10px;
+  font-weight: 900;
+  font-size: 22px;
 }
 
 .grid .country-info h4{
   padding-bottom: 5px;
+  font-weight: 600;
 }
 
 .grid .country-info h4 span{
@@ -342,6 +350,7 @@ header.light-theme {
   }
   .filter .region-filter .select{
     width: 100%;
+    
   }
   .header{
     height: 120px;

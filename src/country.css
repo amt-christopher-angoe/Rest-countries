@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
 
+
 .country{
     padding: 50px;
     font-family: 'Nunito Sans', 'sans-serif';
 }
+
 
 .btn{
     margin-top: 30px;
@@ -13,7 +15,7 @@
     padding-right: 20px;
     box-shadow: 0 1px 7px hsla(200, 15%, 8%, 0.2);
 }
-.btn i span{
+.btn .btn-txt{
   margin-left: 10px;
   font-weight: 300;
   text-transform: lowercase;
@@ -97,7 +99,6 @@ font-weight: 900;
         max-width: 1600px;
       }
 
-
     .btn{        
         padding-left: 25px;
         padding-right: 30px;
@@ -140,9 +141,10 @@ font-weight: 900;
         margin-top: -90px;
       }
       .country article .country-details .right{
-        margin-top: 26%;
+        margin-top: 28%;
       }
       .country article .country-details div h2{
         font-size: 30px;
-      }
+        margin-bottom: 20px;
+     }
     }

@@ -5,29 +5,30 @@ const Headers = () => {
   const changeTheme = () => {
     const nav = document.querySelector('.header');
     const search = document.querySelector('#search') as HTMLInputElement;
-    const placeholder = search.getAttribute('placeholder');
     const select = document.querySelector('.select');
-    const btn = document.querySelector('.btn')
+    const btn = document.querySelector('.btn');
     const countryInfo = document.querySelectorAll('.country-info');
-    const uls = document.querySelectorAll('ul')
-    const searchIcon = document.querySelector('#search-icon')
+    const uls = document.querySelectorAll('ul');
+    const searchIcon = document.querySelector('#search-icon');
     
 
-      document.body.classList.toggle('light-theme');
+      document.body.classList.toggle('light-theme')
       nav?.classList.toggle('light-theme');
       search?.classList.toggle('light-theme');
       select?.classList.toggle('light-theme');
-      btn?.classList.toggle('light-theme')
-      searchIcon?.classList.toggle('light-theme')
+      btn?.classList.toggle('light-theme');
+      searchIcon?.classList.toggle('light-theme');
+    
+
 
 
       countryInfo.forEach((info) => {
         info.classList.toggle('light-theme');
-      })
+      });
     
       uls.forEach((ul) => {
         ul.classList.toggle('light-theme');
-      })
+      });
   }
 
   return (

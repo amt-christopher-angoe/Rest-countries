@@ -23,9 +23,7 @@ export interface Country {
   };
   subregion: string;
   tld: [];
-  currencies: {
-    [0]: {}
-  };
+  currencies: any;
   languages: {};
   borders: [];
   cioc: string

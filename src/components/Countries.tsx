@@ -21,13 +21,7 @@ const Countries = () => {
     e.preventDefault();
     dispatch(searchCountries(searchText));
   };
-/*
-  const handleFilterByRegion = (e: ChangeEvent<HTMLSelectElement>) => {
-    e.preventDefault();
-    const selectedRegion = e.target.value;
-    dispatch(filterCountriesByRegion(selectedRegion));
-    setRegionFilter(selectedRegion);
-  };*/
+
 
   const handleFilterByRegion = (e: ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();

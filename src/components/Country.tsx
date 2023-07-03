@@ -28,7 +28,7 @@ const Country = () => {
         <article key={countryName.common}>
           <div className="country-inner">
             <div className="flag">
-              <img src={flags.svg} alt={countryName.common} />
+              <img src={flags.png} alt={countryName.common} />
             </div>
             <div className="country-details">
               <div>

@@ -168,6 +168,7 @@ body{
   box-shadow: 0 5px 10px hsla(200, 15%, 8%, 0.1);  
   justify-content: space-between;
   cursor: pointer;
+  
 }
 .options{
   font-size: 12px;
@@ -179,10 +180,13 @@ body{
   padding: 20px;
   font-family: inherit;
   box-shadow: 0 5px 10px hsla(200, 15%, 8%, 0.1); 
+  position: absolute;
+  width: 45%;
 }
 .options li{
   margin-bottom: 10px;
   cursor: pointer;
+
 }
 .filter-arrow{
   font-size: 20px;
@@ -343,6 +347,9 @@ header.light-theme {
   .filter .select .custom-select{
     width: 100%;
   }
+  .options{
+    width: 13%;
+  }
   .header{
     height: 120px;
   }
@@ -383,6 +390,7 @@ header.light-theme {
     margin-top: 5px;
     padding: 20px;
     font-family: inherit;
+    width: 13.2%;
   }
   .options li{
     margin-bottom: 11px;

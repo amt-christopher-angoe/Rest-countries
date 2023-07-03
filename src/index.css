@@ -148,28 +148,46 @@ body{
 
 
 /*select*/
-.filter .region-filter {
+.filter .select{
   width: 100%;
 }
-
-.filter .region-filter .select {
+.custom-select {
+  width: 50%;
+}
+.select-btn {
+  display: flex;
   background-color: var(--article-color);
   color: var(--text-color);
-  padding: 10px;
+  padding: 13px;
   border-radius: 5px;
   height: 50px;
-  width: 50%;
+  width: 100%;
   border: none !important;
   outline: none;
   font-family: inherit;
-  box-shadow: 0 5px 10px hsla(200, 15%, 8%, 0.1);
+  box-shadow: 0 5px 10px hsla(200, 15%, 8%, 0.1);  
+  justify-content: space-between;
+  cursor: pointer;
 }
-
-.filter .region-filter .select option{
+.options{
   font-size: 12px;
+  margin-top: 5px;
   border: none;
   outline: none;
+  border-radius: 5px;
+  background-color: var(--article-color);
+  padding: 20px;
+  font-family: inherit;
+  box-shadow: 0 5px 10px hsla(200, 15%, 8%, 0.1); 
 }
+.options li{
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.filter-arrow{
+  font-size: 20px;
+}
+
 
 /*Grid : images and text*/
 /*Grid : images and text*/
@@ -244,10 +262,16 @@ header.light-theme {
 }
 */
 
-.filter .region-filter .select.light-theme{
+.filter .custom-select .select-btn.light-theme{
   background-color: var(--text-color);
   color: var(--light-mode-text);
 }
+
+.filter .custom-select .select-btn .options.light-theme{
+  background-color: var(--text-color);
+
+}
+
 .btn.light-theme{
   background-color: var(--text-color);
   color: var(--light-mode-text);
@@ -281,10 +305,10 @@ header.light-theme {
   .filter .form-control input{
     width: auto;
   }
-  .filter .region-filter{
+  .filter .select{
     width: 20%
   }
-  .filter .region-filter .select{
+  .filter .select .custom-select{
     width: 100%;
   }
   .header{
@@ -311,10 +335,10 @@ header.light-theme {
   .filter .form-control input{
     width: 100%;
   }
-  .filter .region-filter{
+  .filter .select{
     width: 15%
   }
-  .filter .region-filter .select{
+  .filter .select .custom-select{
     width: 100%;
   }
   .header{
@@ -342,12 +366,30 @@ header.light-theme {
   .filter .form-control input{
     width: 100%;
   }
-  .filter .region-filter{
+
+  .filter .select{
     width: 15%
   }
-  .filter .region-filter .select{
+  .filter .select .custom-select{
     width: 100%;
   }
+  .select-btn {
+    padding: 15px;
+  }
+  .options{
+    font-size: 16px;
+    margin-top: 5px;
+    padding: 20px;
+    font-family: inherit;
+  }
+  .options li{
+    margin-bottom: 11px;
+  }
+  .filter-arrow{
+    font-size: 20px;
+    padding-right: 6px;
+  }
+
   .header{
     height: 120px;
   }

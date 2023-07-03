@@ -1,10 +1,11 @@
-import React, { useEffect, useState, FormEvent, ChangeEvent } from 'react';
+import React, { useEffect, useState, FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ThunkDispatch } from 'redux-thunk';
-import { fetchCountries, searchCountries, filterCountriesByRegion, CountriesActionTypes  } from './actions/actions';
+import { fetchCountries, searchCountries, filterCountriesByRegion, CountriesActionTypes,  } from './actions/actions';
 import { AppState } from './actions/reducers';
 import '../index.css'
+import CustomSelect from './CustomSelect';
 
 const Countries = () => {
   const dispatch: ThunkDispatch<AppState, null, CountriesActionTypes> = useDispatch();
@@ -23,11 +24,12 @@ const Countries = () => {
   };
 
 
-  const handleFilterByRegion = (e: ChangeEvent<HTMLSelectElement>) => {
-    e.preventDefault();
-    dispatch(filterCountriesByRegion(e.target.value));
-    setRegionFilter(e.target.value);
+  const handleFilterByRegion = (region: string) => {
+    dispatch(filterCountriesByRegion(region));
+    setRegionFilter(region);
   };
+
+  const regionOptions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
   return (
     <>
@@ -47,24 +49,14 @@ const Countries = () => {
               <i className="fa-solid fa-magnifying-glass" id='search-icon' aria-hidden="true"></i>
             </div>
           </form>
-          {/*onSubmit={handleFilterByRegion*/}
-          <form  className="region-filter">
-            <select
-              name="filter-by-region"
-              id="filter-by-region"
-              className='select'
-              title='select'
-              value={regionFilter}
-              onChange={handleFilterByRegion}
-            >
-              <option hidden >Filter by Region</option>
-              <option value="Africa">Africa</option>
-              <option value="Americas">Americas</option>
-              <option value="Asia">Asia</option>
-              <option value="Europe">Europe</option>
-              <option value="Oceania">Oceania</option>
-            </select>
+
+          <form className='select'>
+            <div className="region-filter" defaultValue={regionFilter}>
+              <CustomSelect options={regionOptions} onSelectOption={handleFilterByRegion} />
+            </div>
           </form>
+          
+          
           </section>
           
           <section className="grid">

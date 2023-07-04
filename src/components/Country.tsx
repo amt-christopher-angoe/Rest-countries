@@ -22,7 +22,7 @@ const Country = () => {
   return (
     <>
       <Link to="/" className="btn btn-light">
-        <i className="fa-solid fa-arrow-left"></i><span className='btn-txt'>back</span>
+        <i className="fa-solid fa-arrow-left"></i><span className='btn-txt'>BACK</span>
       </Link>
       <section className="country">
         <article key={countryName.common}>

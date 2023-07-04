@@ -95,13 +95,13 @@ font-weight: 900;
 /*desktop view*/
 @media(min-width: 1440px){
     .country {
-        max-width: 1500px;
+        max-width: 1600px;
       }
 
     .btn{        
         padding-left: 25px;
         padding-right: 30px;
-        margin-left: 170px;
+        margin-left: 100px;
         margin-top: 60px;
         
         
@@ -115,6 +115,9 @@ font-weight: 900;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 50px;
+    }
+    .country article .flag{
+      margin-left: -30px;
     }
 
       .country article .flag img{

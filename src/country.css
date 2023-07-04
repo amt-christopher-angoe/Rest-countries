@@ -103,8 +103,6 @@ font-weight: 900;
         padding-right: 30px;
         margin-left: 100px;
         margin-top: 60px;
-        
-        
     }
     .country article .country-details{
       margin-top: -30px;
@@ -114,23 +112,23 @@ font-weight: 900;
     .country article .country-inner {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 50px;
+        gap: 60px;
     }
     .country article .flag{
       margin-left: -30px;
     }
 
-      .country article .flag img{
+    .country article .flag img{
         border-radius: 10px;
         border: none;
         width: 750px;
         height: 450px;
 
-      }
+    }
 
-      .country article .borders{
+    .country article .borders{
       margin-top: -10px;
-      }
+    }
 
     
       .country .country-details {
